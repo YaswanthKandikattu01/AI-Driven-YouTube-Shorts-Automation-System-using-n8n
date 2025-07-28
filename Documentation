@@ -1,0 +1,104 @@
+# 🎥 AI-Driven YouTube Shorts Automation System
+
+This project automates the end-to-end process of creating and publishing motivational YouTube Shorts using open-source tools, AI models, and APIs. Built with **n8n**, the system orchestrates video generation, content creation, and publishing — entirely on autopilot.
+
+---
+
+## 🚀 Features
+
+### 1. Download Copyright-Free Assets
+- Downloads royalty-free **videos** and **music** from YouTube.
+- Automatically updates a Google Sheet with metadata.
+- Ensures a consistent pipeline of reusable media assets.
+
+### 2. Generate & Upload Motivational Videos
+- Combines video clips, music, and AI-generated motivational quotes.
+- Adds animated text overlays using predefined templates.
+- Automatically uploads videos to YouTube with titles, descriptions, and tags.
+- Cleans up temporary files after upload.
+- Logs video status in Google Sheets.
+
+### 3. Bonus: Quote Generation using DeepSeek AI
+- Uses the **OpenRouter/DeepSeek LLM** to generate motivational quotes.
+- Structured output is parsed and stored for use in video creation.
+- Fully autonomous content creation cycle — no manual input needed.
+
+---
+
+## 🧰 Tech Stack
+
+- **[n8n](https://n8n.io/)** – Workflow automation engine
+- **Google Sheets API** – Content and metadata management
+- **YouTube Data API v3** – Uploading videos and managing posts
+- **OpenRouter / DeepSeek LLM** – Quote generation via Function Calling
+- **Telegram API** *(optional)* – Notifications and manual triggers
+- **Gmail API** *(optional)* – Email notifications
+- **JavaScript** – Used in `Function` nodes for logic and formatting
+
+---
+
+## 📁 Workflow Structure
+
+### 🟫 1. Download Copyright-Free Assets
+- `Schedule Trigger`
+- `Get YouTube Video` / `Get YouTube Music`
+- `Limit`, `Generate Filename`
+- `Download File`
+- `Update Google Sheet`
+
+### 🟥 2. Generate Motivational Video
+- `Schedule Trigger`
+- `Aggregate Video + Music + Quotes`
+- `Generate Text Overlay & Render Video`
+- `Upload to YouTube`
+- `Update Sheet & Cleanup`
+
+### 🟩 3. Generate Quotes via AI
+- `Schedule Trigger`
+- `Loop over prompts`
+- `Generate text with OpenRouter`
+- `Parse and update Google Sheet`
+
+---
+
+## 📊 Example Use Cases
+
+- Fully autonomous **YouTube Shorts channel**
+- AI-generated **motivational content**
+- Educational, quote-based, or thematic micro-content generation
+
+---
+
+## 📝 Requirements
+
+- n8n self-hosted or cloud instance
+- API keys for:
+  - Google Sheets
+  - YouTube Data API
+  - OpenRouter (DeepSeek or compatible model)
+  - (Optional) Telegram & Gmail APIs
+
+---
+
+## 📦 Setup
+
+1. Clone this repo and import the `.json` workflows into your n8n instance.
+2. Configure credentials for Google Sheets, YouTube, and OpenRouter.
+3. Adjust Google Sheet structure as per the workflows.
+4. Set up schedule triggers or run manually.
+
+---
+
+## 📄 License
+
+MIT License. Feel free to fork and extend this project.
+
+---
+
+## 🙌 Acknowledgements
+
+- [n8n.io](https://n8n.io/)
+- [OpenRouter](https://openrouter.ai/)
+- [DeepSeek LLM](https://deepseek.com/)
+- [YouTube Data API](https://developers.google.com/youtube)
+
